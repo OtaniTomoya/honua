@@ -1,0 +1,76 @@
+/* 
+ * カスタムカーソルスタイル
+ */
+
+ @import 'variables.css';
+
+ /* カーソル表示を非表示（カスタムカーソルを使用するため） */
+ * {
+     cursor: none;
+ }
+ 
+ /* カスタムカーソル - 外側の円 */
+ .cursor-outer {
+     width: 30px;
+     height: 30px;
+     border: 2px solid var(--primary-color);
+     border-radius: 50%;
+     position: fixed;
+     pointer-events: none;
+     z-index: 9999;
+     mix-blend-mode: difference;
+     transition: transform 0.1s ease;
+     transform: translate(-50%, -50%);
+ }
+ 
+ /* カスタムカーソル - 内側のドット */
+ .cursor-inner {
+     width: 8px;
+     height: 8px;
+     background-color: var(--accent-color);
+     border-radius: 50%;
+     position: fixed;
+     pointer-events: none;
+     z-index: 9999;
+     transform: translate(-50%, -50%);
+     transition: width 0.2s ease, height 0.2s ease;
+ }
+ 
+ /* リンクや操作可能な要素にホバーした時の内側カーソル */
+ .cursor-hover .cursor-inner {
+     width: 15px;
+     height: 15px;
+     background-color: var(--accent-color);
+     opacity: 0.8;
+ }
+ 
+ /* リンクや操作可能な要素にホバーした時の外側カーソル */
+ .cursor-hover .cursor-outer {
+     width: 40px;
+     height: 40px;
+     border-color: var(--accent-color);
+     opacity: 0.5;
+     transform: translate(-50%, -50%) scale(1.2);
+ }
+ 
+ /* カーソルをクリックした時のアニメーション効果 */
+ .cursor-click .cursor-outer {
+     transform: translate(-50%, -50%) scale(0.9);
+     opacity: 0.6;
+ }
+ 
+ .cursor-click .cursor-inner {
+     transform: translate(-50%, -50%) scale(0.9);
+     background-color: #fff;
+ }
+ 
+ /* モバイルデバイスでは非表示 */
+ @media (max-width: 768px) {
+     .cursor-outer, .cursor-inner {
+         display: none;
+     }
+     
+     * {
+         cursor: auto;
+     }
+ }
