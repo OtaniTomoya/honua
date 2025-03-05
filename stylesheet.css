@@ -2,7 +2,7 @@
 :root {
     --primary-color: #99CAD8; /* 実際のサイトのメインカラー */
     --secondary-color: #e9f7fd; /* 背景色 */
-    --accent-color: #00752E; /* 緑色の予約ボタン */
+    --accent-color: #FF9F45; /* 緑色の予約ボタン */
     --light-color: #f9f5f0;
     --dark-color: #333333;
     
@@ -704,10 +704,65 @@ section.with-bg {
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
-.contact-method span {
+.contact-method a {
     font-family: var(--body-font);
 }
+/* メールリンクボタンのスタイル改善 */
+.contact-method a.button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--accent-color); /* 緑色の予約ボタンと同じ色を使用 */
+    color: white; /* テキストを白に */
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 100%; /* モバイル表示でも見やすくするため */
+    max-width: 400px;
+    margin-top: 5px;
+}
 
+.contact-method a.button:hover {
+    background-color: transparent;
+    border-color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* メールアイコンを少し大きく調整 */
+.contact-method i {
+    font-size: 2rem;
+}
+
+/* メール項目全体の背景を目立たせる */
+.contact-method {
+    background-color: rgba(255, 255, 255, 0.25); /* 少し明るくする */
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    margin: 30px 0;
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 768px) {
+    .contact-method {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .contact-method i {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    
+    .contact-method a.button {
+        margin-top: 15px;
+    }
+}
 .social-links {
     display: flex;
     margin-top: 30px;
