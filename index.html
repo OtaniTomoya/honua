@@ -9,15 +9,58 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/cursor.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500;600&family=Sacramento&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500;700&family=Montserrat:wght@300;400;500;600;700&family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,500;6..12,600&family=Pacifico&family=Quicksand:wght@300;400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">    
 </head>
 <body>
     <!-- ローディング画面 -->
-    <div id="loading">
-        <div class="spinner"></div>
+<div id="loading">
+    <div class="palm-decoration">
+        <div class="palm-leaf">
+            <svg viewBox="0 0 100 150" width="150" height="200">
+                <path d="M50,150 Q30,100 10,60 Q40,90 50,150" fill="white" />
+                <path d="M50,150 Q70,110 90,70 Q60,100 50,150" fill="white" />
+            </svg>
+        </div>
+        <div class="palm-leaf">
+            <svg viewBox="0 0 100 150" width="150" height="200">
+                <path d="M50,150 Q30,100 10,60 Q40,90 50,150" fill="white" />
+                <path d="M50,150 Q70,110 90,70 Q60,100 50,150" fill="white" />
+            </svg>
+        </div>
+        <div class="palm-leaf">
+            <svg viewBox="0 0 100 150" width="150" height="200">
+                <path d="M50,150 Q30,100 10,60 Q40,90 50,150" fill="white" />
+                <path d="M50,150 Q70,110 90,70 Q60,100 50,150" fill="white" />
+            </svg>
+        </div>
+        <div class="palm-leaf">
+            <svg viewBox="0 0 100 150" width="150" height="200">
+                <path d="M50,150 Q30,100 10,60 Q40,90 50,150" fill="white" />
+                <path d="M50,150 Q70,110 90,70 Q60,100 50,150" fill="white" />
+            </svg>
+        </div>
+    </div>
+    
+    <div class="loading-container">
+        <div class="ripple"></div>
+        <div class="ripple"></div>
+        <div class="ripple"></div>
+        
+        <div class="loading-circle">
+            <div class="loading-circle-inner"></div>
+            <div class="loading-circle-spinner"></div>
+            <div class="loading-circle-accent"></div>
+            <div class="loading-circle-dot"></div>
+        </div>
+        
         <div class="loading-logo">ハワイアンロミロミ<span>honua</span></div>
         <div class="loading-text">Aloha... Loading</div>
+        
+        <div class="loading-progress">
+            <div class="loading-progress-bar"></div>
+        </div>
     </div>
+</div>
 
     <!-- ヘッダー -->
     <header>

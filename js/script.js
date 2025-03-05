@@ -5,13 +5,81 @@
 document.addEventListener('DOMContentLoaded', function() {
     // ローディング画面
     const loading = document.getElementById('loading');
+    const loadingBar = document.querySelector('.loading-progress-bar');
     
-    // ページの完全な読み込み後にローディング画面を非表示
+    // ローディング状態管理変数
+    let progress = 0;
+    let isLoaded = false;
+    let progressComplete = false;
+    
+    // アニメーションでスムーズに進行するローディングバー
+    const loadingInterval = setInterval(function() {
+        // ページが読み込まれていない場合は90%までしか進めない
+        if (!isLoaded && progress < 90) {
+            progress += Math.random() * 6; // 少し遅めに進行
+            if (progress > 90) progress = 90;
+        } 
+        // ページが読み込まれたら100%まで進める
+        else if (isLoaded && progress < 100) {
+            progress += Math.random() * 10;
+            if (progress >= 100) {
+                progress = 100;
+                progressComplete = true;
+                clearInterval(loadingInterval);
+                
+                // プログレスが完了したらローディング画面を非表示
+                hideLoadingScreen();
+            }
+        }
+        
+        // プログレスバーの表示を更新
+        loadingBar.style.width = progress + '%';
+    }, 100);
+    
+    // ページの読み込みが完了したときの処理
     window.addEventListener('load', function() {
+        isLoaded = true;
+        
+        // すでにプログレスが100%なら非表示
+        if (progressComplete) {
+            hideLoadingScreen();
+        }
+        // そうでなければ、最低でも2秒待ってから100%に向かって進める
+        else {
+            // 最低2秒間は表示する
+            setTimeout(function() {
+                if (!progressComplete) {
+                    // 急速に100%まで進める（500ms以内）
+                    const finishInterval = setInterval(function() {
+                        progress += 5;
+                        if (progress >= 100) {
+                            progress = 100;
+                            progressComplete = true;
+                            clearInterval(finishInterval);
+                            
+                            // プログレスが完了したらローディング画面を非表示
+                            hideLoadingScreen();
+                        }
+                        loadingBar.style.width = progress + '%';
+                    }, 50);
+                }
+            }, 2000);
+        }
+    });
+    
+    // ローディング画面を非表示にする関数
+    function hideLoadingScreen() {
         setTimeout(function() {
             loading.classList.add('hidden');
-        }, 2000); // 元のコードと同じく2秒に設定
-    });
+            
+            // ローディング画面が完全に消えた後にフェードイン効果をトリガー
+            setTimeout(function() {
+                document.querySelectorAll('.fade-in').forEach(element => {
+                    element.classList.add('active');
+                });
+            }, 800);
+        }, 500);
+    }
     
     // ヘッダースクロール効果
     const header = document.querySelector('header');
