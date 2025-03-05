@@ -12,8 +12,15 @@ document.addEventListener('DOMContentLoaded', function() {
     cursorInner.classList.add('cursor-inner');
     document.body.appendChild(cursorInner);
 
+    // 最後のマウス位置を記録
+    let lastX = 0;
+    let lastY = 0;
+
     // マウス移動に合わせてカーソル位置を更新
     document.addEventListener('mousemove', (e) => {
+        lastX = e.clientX;
+        lastY = e.clientY;
+
         // 通常のアニメーション - 内側のドットはマウスに直接追従
         cursorInner.style.left = `${e.clientX}px`;
         cursorInner.style.top = `${e.clientY}px`;
@@ -23,6 +30,17 @@ document.addEventListener('DOMContentLoaded', function() {
             cursorOuter.style.left = `${e.clientX}px`;
             cursorOuter.style.top = `${e.clientY}px`;
         }, 100);
+    });
+
+    // スクロール時にカーソル位置を維持（スクロール位置に合わせて更新）
+    document.addEventListener('scroll', () => {
+        // スクロール中も最後のマウス位置に基づいてカーソルを更新
+        // スクロール中はマウスイベントが発生しないため、表示を切り替える代わりに
+        // 位置を維持し続ける
+        cursorInner.style.left = `${lastX}px`;
+        cursorInner.style.top = `${lastY}px`;
+        cursorOuter.style.left = `${lastX}px`;
+        cursorOuter.style.top = `${lastY}px`;
     });
 
     // クリック時のエフェクト
@@ -49,17 +67,6 @@ document.addEventListener('DOMContentLoaded', function() {
             cursorOuter.classList.remove('cursor-hover');
             cursorInner.classList.remove('cursor-hover');
         });
-    });
-
-    // スクロール時にもカーソルが見えるようにする
-    document.addEventListener('scroll', () => {
-        cursorOuter.style.display = 'none';
-        cursorInner.style.display = 'none';
-        
-        setTimeout(() => {
-            cursorOuter.style.display = 'block';
-            cursorInner.style.display = 'block';
-        }, 100);
     });
     
     // ページから出た時にカーソルを非表示にする
