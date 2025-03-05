@@ -1,3 +1,7 @@
+/**
+ * ハワイアンロミロミhonua - メインJavaScript
+ */
+
 document.addEventListener('DOMContentLoaded', function() {
     // ローディング画面
     const loading = document.getElementById('loading');
@@ -6,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('load', function() {
         setTimeout(function() {
             loading.classList.add('hidden');
-        }, 2000);
+        }, 2000); // 元のコードと同じく2秒に設定
     });
     
     // ヘッダースクロール効果
@@ -24,8 +28,39 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileToggle = document.querySelector('.mobile-toggle');
     const nav = document.querySelector('nav');
     
-    mobileToggle.addEventListener('click', function() {
+    // ハンバーガーボタンクリックでメニュー表示
+    mobileToggle.addEventListener('click', function(e) {
+        e.stopPropagation(); // イベントの伝播を停止
         nav.classList.toggle('active');
+        
+        // メニューが開いたときだけ、bodyにクリックイベントを追加
+        if (nav.classList.contains('active')) {
+            setTimeout(() => {
+                document.body.addEventListener('click', closeMenuOnOutsideClick);
+            }, 10);
+        } else {
+            document.body.removeEventListener('click', closeMenuOnOutsideClick);
+        }
+    });
+    
+    // メニュー外クリックで閉じる機能
+    function closeMenuOnOutsideClick(e) {
+        // ナビゲーション自体、または子要素がクリックされた場合は何もしない
+        if (nav.contains(e.target) || e.target === mobileToggle) {
+            return;
+        }
+        
+        // メニュー外がクリックされた場合は閉じる
+        nav.classList.remove('active');
+        document.body.removeEventListener('click', closeMenuOnOutsideClick);
+    }
+    
+    // ナビゲーション内のリンクがクリックされたらメニューを閉じる
+    nav.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+            nav.classList.remove('active');
+            document.body.removeEventListener('click', closeMenuOnOutsideClick);
+        }
     });
     
     // ナビゲーションリンクアクティブ化
@@ -34,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function updateActiveLink() {
         let current = '';
-        const headerHeight = document.querySelector('header').offsetHeight;
+        const headerHeight = header.offsetHeight;
         
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -66,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
-                const headerHeight = document.querySelector('header').offsetHeight;
+                const headerHeight = header.offsetHeight;
                 const targetPosition = targetElement.offsetTop;
                 
                 window.scrollTo({
@@ -81,15 +116,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // スクロールダウンボタン
-    document.querySelector('.scroll-down').addEventListener('click', function() {
-        const aboutSection = document.querySelector('#about');
-        const headerHeight = document.querySelector('header').offsetHeight;
-        
-        window.scrollTo({
-            top: aboutSection.offsetTop - headerHeight,
-            behavior: 'smooth'
+    const scrollDown = document.querySelector('.scroll-down');
+    
+    if (scrollDown) {
+        scrollDown.addEventListener('click', function() {
+            const aboutSection = document.querySelector('#about');
+            const headerHeight = header.offsetHeight;
+            
+            window.scrollTo({
+                top: aboutSection.offsetTop - headerHeight,
+                behavior: 'smooth'
+            });
         });
-    });
+    }
     
     // スクロール時のフェードイン
     const fadeElements = document.querySelectorAll('.fade-in');
@@ -105,17 +144,38 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // カルーセルナビゲーション状態の更新
+    function updateCarouselNav() {
+        // カルーセルナビゲーションがあれば実行
+        const carousel = document.querySelector('.services-carousel');
+        if (carousel) {
+            // このサイトではカルーセルナビゲーションの具体的な実装は不要
+            // プレースホルダーとして残しておく
+        }
+    }
+    
+    // ギャラリーナビゲーション状態の更新
+    function updateGalleryNav() {
+        // ギャラリーナビゲーションがあれば実行
+        const gallery = document.querySelector('.gallery');
+        if (gallery) {
+            // このサイトではギャラリーナビゲーションの具体的な実装は不要
+            // プレースホルダーとして残しておく
+        }
+    }
+    
+    // 各種イベントリスナー登録
     window.addEventListener('scroll', checkFade);
     window.addEventListener('load', checkFade);
-    
-    // 初期状態のチェック
-    updateCarouselNav();
-
-    // ウィンドウのリサイズ時もナビゲーションの状態を更新
     window.addEventListener('resize', function() {
         updateCarouselNav();
         updateGalleryNav();
     });
+    
+    // 初期実行
+    checkFade();
+    updateActiveLink();
+    updateCarouselNav();
     
     // ページ読み込み完了時に一度実行
     window.addEventListener('load', function() {

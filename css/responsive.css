@@ -1,0 +1,233 @@
+/* 
+ * レスポンシブスタイル
+ */
+
+ @import 'variables.css';
+
+ /* デスクトップ - 小 */
+ @media (max-width: 1024px) {
+     .about-content, 
+     .access-content, 
+     .contact-content {
+         flex-direction: column;
+     }
+ 
+ /* モバイル - 小 */
+ @media (max-width: 576px) {
+     .hero-title {
+         font-size: 2rem;
+     }
+     
+     .hero-subtitle {
+         font-size: 1rem;
+     }
+     
+     .btn {
+         padding: 10px 20px;
+         font-size: 0.8rem;
+         display: block;
+         width: 80%;
+         margin: 0 auto 15px;
+         text-align: center;
+     }
+ }
+     
+     .section-title {
+         font-size: 2.5rem;
+     }
+     
+     .hero-title {
+         font-size: 3rem;
+     }
+     
+     .footer-content {
+         flex-wrap: wrap;
+     }
+     
+     .footer-about {
+         flex: 0 0 100%;
+         margin-bottom: 30px;
+     }
+     
+     .footer-links, 
+     .footer-contact {
+         flex: 0 0 48%;
+     }
+ }
+ 
+ /* タブレット */
+ @media (max-width: 992px) {
+     /* 特徴セクションのスマホ表示向け改善 */
+     .feature-item {
+         backdrop-filter: blur(15px);
+         border: 1px solid rgba(255, 255, 255, 0.2);
+         padding: 40px 25px;
+         transition: all 0.4s ease;
+         overflow: visible;
+     }
+     
+     .feature-item:hover {
+         transform: translateY(-10px) scale(1.02);
+         box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+         border: 1px solid rgba(255, 255, 255, 0.3);
+     }
+     
+     .feature-content {
+         flex-direction: column !important;
+         padding: 20px 0 !important;
+     }
+     
+     .feature-image {
+         max-width: 280px;
+         width: 280px;
+         height: 280px;
+         min-width: 280px;
+         max-height: 280px;
+         margin: 0 auto 30px;
+         border-radius: 15px;
+         box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 0 15px rgba(255, 255, 255, 0.1);
+         border: 3px solid rgba(255, 255, 255, 0.15);
+         transform: rotate(-2deg);
+         transition: all 0.5s ease;
+     }
+     
+     .feature-item:nth-child(3) .feature-image {
+         transform: rotate(2deg);
+     }
+     
+     .feature-image:hover {
+         transform: rotate(0) scale(1.05);
+     }
+     
+     .feature-item:nth-child(3) .feature-image:hover {
+         transform: rotate(0) scale(1.05);
+     }
+     
+     .feature-title {
+         text-align: center;
+         font-size: 1.7rem;
+         margin-bottom: 25px;
+     }
+     
+     .feature-title::after {
+         left: 50% !important;
+         transform: translateX(-50%);
+         right: auto !important;
+         background: var(--primary-gradient) !important;
+         width: 80px;
+         height: 3px;
+     }
+     
+     .feature-number {
+         top: -25px !important;
+         left: 50% !important;
+         right: auto !important;
+         transform: translateX(-50%);
+         width: 90px;
+         height: 90px;
+         font-size: 2.2rem;
+         z-index: 5;
+         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+     }
+     
+     .feature-desc {
+         text-align: center;
+         font-size: 1.05rem;
+         line-height: 1.9;
+     }
+     
+     .feature-desc p {
+         margin-bottom: 18px;
+     }
+     
+     /* 波形ディバイダーを強調 */
+     .wave-divider {
+         height: 60px;
+         margin: -20px 0;
+         opacity: 0.8;
+     }
+ }
+ 
+ /* モバイル - 大 */
+ @media (max-width: 768px) {
+     .mobile-toggle {
+         display: block;
+     }
+     
+     nav {
+         position: fixed;
+         top: 0;
+         right: -300px;
+         width: 300px;
+         height: 100vh;
+         background-color: rgba(0, 0, 0, 0.9);
+         flex-direction: column;
+         justify-content: center;
+         transition: right 0.3s ease;
+         z-index: 100;
+     }
+     
+     nav.active {
+         right: 0;
+     }
+     
+     nav ul {
+         flex-direction: column;
+         align-items: center;
+     }
+     
+     nav ul li {
+         margin: 15px 0;
+     }
+     
+     section {
+         padding: 80px 0;
+     }
+     
+     .section-title {
+         font-size: 2rem;
+     }
+     
+     .hero-title {
+         font-size: 2.5rem;
+     }
+     
+     .footer-links, 
+     .footer-contact {
+         flex: 0 0 100%;
+         margin-bottom: 30px;
+     }
+     
+     .profile-container {
+         flex-direction: column;
+         align-items: center;
+         text-align: center;
+     }
+     
+     .profile-image {
+         flex: 0 0 200px;
+         width: 200px;
+         height: 200px;
+         margin-bottom: 20px;
+     }
+     
+     .profile-name::after {
+         left: 50%;
+         transform: translateX(-50%);
+     }
+     
+     .contact-method {
+         flex-direction: column;
+         align-items: center;
+         text-align: center;
+     }
+     
+     .contact-method i {
+         margin-right: 0;
+         margin-bottom: 15px;
+     }
+     
+     .contact-method a.button {
+         margin-top: 15px;
+     }
+ }

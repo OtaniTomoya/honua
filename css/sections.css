@@ -1,0 +1,413 @@
+/* 
+ * セクションごとのスタイル
+ */
+
+ @import 'variables.css';
+
+ /* ヒーローセクション */
+ #hero {
+     height: 100vh;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     text-align: center;
+     padding: 0;
+     background-color: rgba(58, 125, 136, 0.1);
+ }
+ 
+ .hero-content {
+     max-width: 800px;
+     margin: 0 auto;
+ }
+ 
+ .hero-title {
+     font-size: 4rem;
+     margin-bottom: 20px;
+     letter-spacing: 2px;
+     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+     font-family: var(--heading-font);
+ }
+ 
+ .hero-subtitle {
+     font-size: 1.3rem;
+     margin-bottom: 40px;
+     font-weight: 300;
+     line-height: 1.8;
+     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+     font-family: var(--body-font);
+ }
+ 
+ /* 特徴セクション */
+ .features-wave {
+     position: relative;
+     padding: 40px 0;
+ }
+ 
+ .feature-item {
+     position: relative;
+     background-color: rgba(255, 255, 255, 0.08);
+     backdrop-filter: blur(8px);
+     border-radius: var(--border-radius-md);
+     padding: 40px;
+     margin-bottom: 50px;
+     box-shadow: var(--shadow-md);
+     border: 1px solid rgba(255, 255, 255, 0.1);
+     overflow: hidden;
+     transition: var(--transition-fast);
+ }
+ 
+ .feature-item:hover {
+     transform: translateY(-10px);
+     box-shadow: var(--shadow-lg);
+ }
+ 
+ .feature-number {
+     position: absolute;
+     top: -15px;
+     left: -15px;
+     width: 80px;
+     height: 80px;
+     background: var(--accent-color);
+     color: white;
+     font-size: 2rem;
+     font-weight: 700;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     border-radius: var(--border-radius-circle);
+     box-shadow: var(--shadow-sm);
+     z-index: 1;
+     font-family: var(--script-font);
+     border: 3px solid rgba(255, 255, 255, 0.2);
+ }
+ 
+ .feature-content {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 30px;
+     align-items: center;
+     padding-left: 40px;
+ }
+ 
+ .feature-title {
+     font-size: 1.8rem;
+     margin-bottom: 20px;
+     color: var(--secondary-color);
+     flex: 0 0 100%;
+     position: relative;
+     padding-bottom: 15px;
+     font-family: var(--heading-font);
+     letter-spacing: 0.03em;
+ }
+ 
+ .feature-title::after {
+     content: '';
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     width: 60px;
+     height: 2px;
+     background: var(--primary-gradient);
+ }
+ 
+ .feature-image {
+     flex: 0 0 320px;
+     width: 320px;
+     height: 220px;
+     min-width: 320px;
+     max-width: 320px;
+     min-height: 220px;
+     max-height: 220px;
+     border-radius: var(--border-radius-sm);
+     overflow: hidden;
+     box-shadow: var(--shadow-md);
+ }
+ 
+ .feature-image img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     display: block;
+     transition: transform 0.5s ease;
+ }
+ 
+ .feature-image:hover img {
+     transform: scale(1.05);
+ }
+ 
+ .feature-desc {
+     flex: 1.5;
+     min-width: 250px;
+     font-family: var(--body-font);
+ }
+ 
+ .feature-desc p {
+     margin-bottom: 15px;
+     line-height: 1.8;
+     font-size: 1.05rem;
+ }
+ 
+ /* 波形ディバイダー */
+ .wave-divider {
+     position: relative;
+     height: 40px;
+     margin: -20px 0;
+     z-index: 1;
+ }
+ 
+ .wave-divider svg {
+     width: 100%;
+     height: 100%;
+ }
+ 
+ /* 特徴アイテムの交互レイアウト */
+ .feature-item:nth-child(3) .feature-content {
+     flex-direction: row-reverse;
+ }
+ 
+ .feature-item:nth-child(3) .feature-number {
+     left: auto;
+     right: -15px;
+ }
+ 
+ .feature-item:nth-child(3) .feature-content {
+     padding-left: 0;
+     padding-right: 40px;
+ }
+ 
+ .feature-item:nth-child(3) .feature-title::after {
+     left: auto;
+     right: 0;
+     background: linear-gradient(to left, var(--primary-color), var(--accent-color));
+ }
+ 
+ /* サービスセクション */
+ .services-carousel {
+     width: 100%;
+     overflow-x: auto;
+     -webkit-overflow-scrolling: touch;
+     scroll-behavior: smooth;
+     padding: 20px 0;
+     position: relative;
+     display: block;
+     scrollbar-width: thin;
+     scrollbar-color: var(--accent-color) rgba(255, 255, 255, 0.1);
+     scroll-snap-type: x mandatory;
+ }
+ 
+ .services-carousel::-webkit-scrollbar {
+     height: 6px;
+ }
+ 
+ .services-carousel::-webkit-scrollbar-track {
+     background: rgba(255, 255, 255, 0.1);
+     border-radius: 3px;
+ }
+ 
+ .services-carousel::-webkit-scrollbar-thumb {
+     background-color: var(--accent-color);
+     border-radius: 3px;
+ }
+ 
+ .services-wrapper {
+     display: flex;
+     padding: 10px 5px;
+     width: max-content;
+     gap: 20px;
+ }
+ 
+ .service-card {
+     flex: 0 0 340px;
+     margin: 0 10px;
+     background-color: rgba(255, 255, 255, 0.1);
+     backdrop-filter: blur(10px);
+     border-radius: var(--border-radius-sm);
+     overflow: hidden;
+     box-shadow: var(--shadow-md);
+     transition: var(--transition-fast);
+     scroll-snap-align: center;
+     border: 1px solid rgba(255, 203, 164, 0.2);
+ }
+ 
+ .service-card:hover {
+     transform: translateY(-10px);
+ }
+ 
+ .service-image {
+     height: 200px;
+     background-size: cover;
+     background-position: center;
+ }
+ 
+ .service-content {
+     padding: 25px;
+ }
+ 
+ .service-title {
+     font-size: 1.5rem;
+     margin-bottom: 10px;
+     font-family: var(--heading-font);
+     letter-spacing: 0.03em;
+ }
+ 
+ .service-price {
+     color: var(--secondary-color);
+     font-weight: 600;
+     margin-bottom: 15px;
+     display: block;
+     font-family: var(--rounded-font);
+ }
+ 
+ .service-desc {
+     margin-bottom: 20px;
+     font-weight: 300;
+     font-size: 0.95rem;
+     line-height: 1.7;
+     font-family: var(--body-font);
+ }
+ 
+ /* プロフィールセクション */
+ .profile-container {
+     display: flex;
+     align-items: flex-start;
+     gap: 50px;
+     background-color: rgba(255, 255, 255, 0.1);
+     backdrop-filter: blur(10px);
+     border-radius: var(--border-radius-sm);
+     padding: 30px;
+     box-shadow: var(--shadow-md);
+ }
+ 
+ .profile-image {
+     flex: 0 0 300px;
+     border-radius: var(--border-radius-circle);
+     overflow: hidden;
+     box-shadow: var(--shadow-md);
+ }
+ 
+ .profile-image img {
+     width: 100%;
+     height: auto;
+     display: block;
+ }
+ 
+ .profile-content {
+     flex: 1;
+ }
+ 
+ .profile-name {
+     font-size: 1.8rem;
+     margin-bottom: 20px;
+     position: relative;
+     padding-bottom: 15px;
+     font-family: var(--heading-font);
+     letter-spacing: 0.03em;
+ }
+ 
+ .profile-name::after {
+     content: '';
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     width: 40px;
+     height: 2px;
+     background-color: var(--accent-color);
+ }
+ 
+ .profile-bio {
+     margin-bottom: 20px;
+     line-height: 1.8;
+     font-family: var(--body-font);
+ }
+ 
+ .profile-bio p {
+     margin-bottom: 15px;
+ }
+ 
+ /* アクセスセクション */
+ .access-content {
+     display: flex;
+     align-items: center;
+     gap: 50px;
+ }
+ 
+ .access-info {
+     flex: 1;
+ }
+ 
+ .access-hours {
+     background-color: rgba(255, 255, 255, 0.1);
+     padding: 20px;
+     border-radius: var(--border-radius-sm);
+     margin-top: 20px;
+ }
+ 
+ .access-hours h3 {
+     margin-bottom: 10px;
+     color: var(--secondary-color);
+     font-family: var(--heading-font);
+ }
+ 
+ /* 予約セクション */
+ .contact-content {
+     display: flex;
+     gap: 50px;
+ }
+ 
+ .contact-method {
+     display: flex;
+     align-items: center;
+     margin: 30px 0;
+     padding: 20px;
+     background-color: rgba(255, 255, 255, 0.25);
+     border-radius: var(--border-radius-md);
+     border: 1px solid rgba(255, 255, 255, 0.5);
+ }
+ 
+ .contact-method a.button {
+     display: inline-block;
+     padding: 12px 24px;
+     background-color: var(--accent-color);
+     color: white;
+     border-radius: var(--border-radius-lg);
+     font-size: 1.1rem;
+     font-weight: 600;
+     text-align: center;
+     transition: var(--transition-fast);
+     border: 2px solid transparent;
+     box-shadow: var(--shadow-sm);
+     width: 100%;
+     max-width: 400px;
+     margin-top: 5px;
+ }
+ 
+ .contact-method a.button:hover {
+     background-color: transparent;
+     border-color: white;
+     transform: translateY(-5px);
+     box-shadow: var(--shadow-md);
+ }
+ 
+ .reservation-info {
+     background-color: rgba(255, 255, 255, 0.1);
+     padding: 20px;
+     border-radius: var(--border-radius-sm);
+     margin-top: 30px;
+ }
+ 
+ .reservation-info h3 {
+     margin-bottom: 15px;
+     color: var(--secondary-color);
+     font-family: var(--heading-font);
+ }
+ 
+ .reservation-info ul {
+     list-style-type: disc;
+     padding-left: 20px;
+     margin-bottom: 20px;
+     font-family: var(--body-font);
+ }
+ 
+ .reservation-info li {
+     margin-bottom: 8px;
+ }

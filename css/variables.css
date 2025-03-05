@@ -1,0 +1,42 @@
+/* 
+ * 変数定義ファイル - ハワイアンロミロミホヌアのテーマ
+ */
+
+ :root {
+    /* カラーパレット */
+    --primary-color: #99CAD8;     /* メインカラー */
+    --secondary-color: #e9f7fd;   /* 背景色 */
+    --accent-color: #D9BE6C;      /* アクセントカラー（ボタンなど） */
+    --light-color: #f9f5f0;       /* 明るい色 */
+    --dark-color: #333333;        /* 暗い色 */
+    
+    /* グラデーション */
+    --primary-gradient: linear-gradient(to right, var(--primary-color), var(--accent-color));
+    --overlay-gradient: linear-gradient(rgba(38, 70, 83, 0.5), rgba(153, 202, 216, 0.7));
+    
+    /* フォント */
+    --heading-font: 'Josefin Sans', 'Noto Serif JP', sans-serif;
+    --body-font: 'Noto Sans JP', sans-serif;
+    --script-font: 'Sacramento', cursive;
+    --rounded-font: 'Cormorant Garamond', sans-serif;
+    
+    /* スペース */
+    --section-padding: 100px 0;
+    --container-width: 90%;
+    --container-max: 1200px;
+    
+    /* アニメーション */
+    --transition-fast: all 0.3s ease;
+    --transition-slow: all 0.5s ease;
+    
+    /* シャドウ */
+    --shadow-sm: 0 5px 15px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 15px 30px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.3);
+    
+    /* ボーダー */
+    --border-radius-sm: 8px;
+    --border-radius-md: 15px;
+    --border-radius-lg: 30px;
+    --border-radius-circle: 50%;
+}
