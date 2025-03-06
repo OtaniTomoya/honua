@@ -487,3 +487,198 @@
  .reservation-info li {
      margin-bottom: 8px;
  }
+/* 問い合わせメソッド全体のコンテナを横並びに */
+.contact-methods-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+/* 各問い合わせ方法のカード調整 */
+.contact-method {
+    flex: 1;
+    min-width: 300px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: var(--border-radius-md);
+    padding: 25px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: var(--shadow-md);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 上部分（アイコンとタイトル）の横並び */
+.contact-method-top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* 罫線（区切り線）を追加 */
+.contact-methods-container {
+    position: relative;
+}
+
+.contact-method:first-child::after {
+    content: '';
+    position: absolute;
+    right: -15px;
+    top: 25%;
+    height: 50%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.contact-method::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--primary-gradient);
+    z-index: 1;
+}
+
+.contact-method:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* 問い合わせ方法の内部要素の配置 */
+.contact-method-info {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    flex: 1;
+}
+
+/* 問い合わせ方法のタイトル */
+.contact-method-title {
+    font-family: var(--heading-font);
+    font-size: 1.3rem;
+    color: var(--secondary-color);
+    margin-bottom: 0;
+}
+
+/* 問い合わせボタンのスタイル改善 */
+.contact-method .button {
+    display: inline-block;
+    width: 100%;
+    padding: 15px 24px;
+    margin-top: 15px;
+    background: linear-gradient(45deg, var(--accent-color), #f3d285);
+    color: white;
+    border-radius: var(--border-radius-lg);
+    font-family: var(--rounded-font);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: center;
+    transition: all 0.4s ease;
+    border: 2px solid transparent;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.contact-method .button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #3a7d88, var(--primary-color));
+    transition: all 0.5s ease;
+    z-index: -1;
+}
+
+.contact-method .button:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.contact-method .button:hover::before {
+    left: 0;
+}
+
+/* アイコンの調整 */
+.contact-method-icon {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    transition: all 0.3s ease;
+}
+
+.contact-method:hover .contact-method-icon {
+    background: var(--accent-color);
+    transform: scale(1.05);
+}
+
+.contact-method-icon i {
+    font-size: 1.5rem;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+/* ボタン部分の調整 */
+.contact-method .button {
+    font-family: var(--rounded-font);
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 12px 24px;
+    margin-left: auto;
+    background: linear-gradient(45deg, var(--accent-color), #f3d285);
+    color: white;
+    border-radius: var(--border-radius-lg);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.contact-method .button:hover {
+    background: transparent;
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .contact-methods-container {
+        flex-direction: column;
+    }
+    
+    .contact-method {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    .contact-method:first-child::after {
+        display: none;
+    }
+    
+    .contact-method-top {
+        justify-content: center;
+    }
+    
+    .contact-method-title {
+        text-align: center;
+    }
+}
